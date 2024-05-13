@@ -1,0 +1,29 @@
+Offline PDF Summarizer
+Using LangChain and Zephyr-7b to summarize PDFs.
+
+Theory
+To summarize PDF files locally without any API or Internet connection
+
+Usage
+To summarize PDF files locally without any API connections
+Download and save the Zephyr-7b model from HuggingFace
+
+#################################################################
+
+model_name = "HuggingFaceH4/zephyr-7b-beta"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
+
+tokenizer.save_pretrained("zephyr-7b-beta-tokenizer")
+model.save_pretrained("zephyr-7b-beta-model")
+
+#################################################################
+
+Modify the prompt as per your requirement.
+Create virtual environment
+Install dependencies
+Run summary.py.
+I recommend testing your prompts on smaller PDFs as it can take many trials before finding a good prompt.
+
+Potential improvements
+One could improve text size management (chunking and creating vector DB) to try and run on large PDFs while minimizing the risk of overflow (I could provide examples if needed)
